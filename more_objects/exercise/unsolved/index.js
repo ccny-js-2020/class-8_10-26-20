@@ -29,4 +29,5 @@
   - For each round, push the stats of the round to the game rounds array.
     Have it be html text that you push to the rounds array, where you bolden your guess, the computer's random word, and your winning percentage
     Display the information for all of the rounds on the html
+  - clear the value in the input
 */
