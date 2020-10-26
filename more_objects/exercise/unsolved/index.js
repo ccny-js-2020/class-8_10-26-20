@@ -27,7 +27,10 @@
     - set a message that you lost and append it to the ui
   - calculate your winning percentage and append it to the ui
   - For each round, push the stats of the round to the game rounds array.
-    Have it be html text that you push to the rounds array, where you bolden your guess, the computer's random word, and your winning percentage
+    Have it be html text that you push to the rounds array, where you bolden:
+    - your guess
+    - the computer's random word
+    - your winning percentage. Bonus: make this text have a glow effect
     Display the information for all of the rounds on the html
   - clear the value in the input
 */
