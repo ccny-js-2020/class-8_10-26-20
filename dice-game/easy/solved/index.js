@@ -26,23 +26,23 @@ Instructions (Option Two):
 
 //Option 1
 
-//setting values of the three playerOne dice with a random number between 1 to 6
-var playerOneDiceOne = Math.ceil(Math.random() * 6);
-var playerOneDiceTwo = Math.ceil(Math.random() * 6);
-var playerOneDiceThree = Math.ceil(Math.random() * 6);
-
-//setting values of the three playerTwo dice with a random number between 1 to 6
-var playerTwoDiceOne = Math.ceil(Math.random() * 6);
-var playerTwoDiceTwo = Math.ceil(Math.random() * 6);
-var playerTwoDiceThree = Math.ceil(Math.random() * 6);
-
-//the sum of player one's dice
-var playerOneTotal = playerOneDiceOne + playerOneDiceTwo + playerOneDiceThree;
-//the sum of player two's dice
-var playerTwoTotal = playerTwoDiceOne + playerTwoDiceTwo + playerTwoDiceThree;
-
 //creating a function that when invoked will run option one
 function runOptionOne(){
+  //setting values of the three playerOne dice with a random number between 1 to 6
+  var playerOneDiceOne = Math.ceil(Math.random() * 6);
+  var playerOneDiceTwo = Math.ceil(Math.random() * 6);
+  var playerOneDiceThree = Math.ceil(Math.random() * 6);
+
+  //setting values of the three playerTwo dice with a random number between 1 to 6
+  var playerTwoDiceOne = Math.ceil(Math.random() * 6);
+  var playerTwoDiceTwo = Math.ceil(Math.random() * 6);
+  var playerTwoDiceThree = Math.ceil(Math.random() * 6);
+
+  //the sum of player one's dice
+  var playerOneTotal = playerOneDiceOne + playerOneDiceTwo + playerOneDiceThree;
+  //the sum of player two's dice
+  var playerTwoTotal = playerTwoDiceOne + playerTwoDiceTwo + playerTwoDiceThree;
+
   //alerting the player one totals and player two totals
   alert("Player One Total: " + playerOneTotal + ", Player Two Total: " + playerTwoTotal);
 
@@ -56,39 +56,47 @@ function runOptionOne(){
   }
 }
 
+//runOptionOne();
+
 //Option 2
-
-//setting values of the three playerOne dice with a random number between 1 to 6
-var playerOne = {
-  diceOne: Math.ceil(Math.random() * 6),
-  diceTwo: Math.ceil(Math.random() * 6),
-  diceThree: Math.ceil(Math.random() * 6),
-  total: undefined
-}
-
-var playerTwo = {
-  diceOne: Math.ceil(Math.random() * 6),
-  diceTwo: Math.ceil(Math.random() * 6),
-  diceThree: Math.ceil(Math.random() * 6),
-  total: undefined
-}
-
-//the sum of player one's dice
-playerOne.total = playerOne.diceOne + playerOne.diceTwo + playerOne.diceThree;
-//the sum of player two's dice
-playerTwo.total = playerTwo.diceOne + playerTwo.diceTwo + playerTwo.diceThree;
 
 //creating a function that when invoked will run option two
 function runOptionTwo(){
+  //setting values of the three playerOne dice with a random number between 1 to 6
+  var playerOne = {
+    diceOne: Math.ceil(Math.random() * 6),
+    diceTwo: Math.ceil(Math.random() * 6),
+    diceThree: Math.ceil(Math.random() * 6),
+    total: undefined
+  }
+
+  var playerTwo = {
+    diceOne: Math.ceil(Math.random() * 6),
+    diceTwo: Math.ceil(Math.random() * 6),
+    diceThree: Math.ceil(Math.random() * 6),
+    total: undefined
+  }
+
+  //the sum of player one's dice
+  playerOne.total = returnDiceTotals(playerOne.diceOne, playerOne.diceTwo, playerOne.diceThree)
+  //the sum of player two's dice
+  playerTwo.total = returnDiceTotals(playerTwo.diceOne, playerTwo.diceTwo, playerTwo.diceThree)
+
   //alerting the player one totals and player two totals
   alert("Player One Total: " + playerOne.total + ", Player Two Total: " + playerTwo.total);
 
   //setting the logic to see who the winner is
   if(playerOne.total > playerTwo.total){
     alert("Player One Wins");
-  } else if(playerOneTotal < playerTwoTotal) {
+  } else if(playerOne.total < playerTwo.total) {
     alert("Player Two Wins")
   } else {
     alert("TIE!")
   }
+}
+
+runOptionTwo();
+
+function returnDiceTotals(diceOne, diceTwo, diceThree){
+  return diceOne + diceTwo + diceThree;
 }

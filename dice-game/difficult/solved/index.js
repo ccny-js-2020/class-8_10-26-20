@@ -44,45 +44,63 @@ var playerTwo = {
   "wins": 0
 }
 
+// if you want to be more object oriented, you can do this too
+var game = {
+  currentRound: 0,
+  ties: 0
+}
 //setting a variable to indicate which round the game is at
-var roundNumber = 0;
+// var currentRound = 0;
 //setting a variable to indicate how many ties there are
-var ties = 0;
+// var ties = 0;
 
-//while the round number is less than 9, meaning there will only be 9 rounds in this game
-//this while loop will stop when round number gets to 9
-while(roundNumber < 9){
-  //setting playerOne's dice total to the sum of all 3 dice totals
-  //the dice total property is being added to the player one object
-  playerOne.diceTotal = playerOne.diceOne + playerOne.diceTwo + playerOne.diceThree;
-  //setting playerTwo's dice total to the sum of all 3 dice totals
-  //the dice total property is being added to the playerTwo object
-  playerTwo.diceTotal = playerTwo.diceOne + playerTwo.diceTwo + playerTwo.diceThree;
+function runDiceGame(){
+  //while the round number is less than 9, meaning there will only be 9 rounds in this game
+  //this while loop will stop when round number gets to 9
+  while(game.currentRound < 9){
+    //setting playerOne's dice total to the sum of all 3 dice totals
+    //the dice total property is being added to the player one object
+    playerOne.diceTotal = playerOne.diceOne + playerOne.diceTwo + playerOne.diceThree;
+    //setting playerTwo's dice total to the sum of all 3 dice totals
+    //the dice total property is being added to the playerTwo object
+    playerTwo.diceTotal = playerTwo.diceOne + playerTwo.diceTwo + playerTwo.diceThree;
 
-  //alerting playerOne and playerTwo's dice rolls totals
-  alert(playerOne.name + "\'s rolls " + playerOne.diceTotal + ", " + playerTwo.name + "\'s rolls " + playerTwo.diceTotal);
+    //alerting playerOne and playerTwo's dice rolls totals
+    alert(playerOne.name + " rolls " + playerOne.diceTotal + ", " + playerTwo.name + " rolls " + playerTwo.diceTotal);
 
-  //setting the logic to see who won the dice roll
-  if(playerOne.diceTotal > playerTwo.diceTotal){
-    //alerting that playerOne won since their total waas greater than playerTwo's
-    alert("Player One Wins the round");
-    //incrementing playerOne wins by 1
-    playerOne.wins++;
-  } else if(playerOne.diceTotal < playerTwo.diceTotal) {
-    //alerting that playerTwo won since their total waas greater than playerOne's
-    alert("Player Two Wins the round")
-    //incrementing playerTwo wins by 1
-    playerTwo.wins++;
-  } else {
-    //alerting that there was a ties
-    alert("TIE this round");
-    //incrementing the ties variable by 1
-    ties++;
+    //setting the logic to see who won the dice roll
+    if(playerOne.diceTotal > playerTwo.diceTotal){
+      //alerting that playerOne won since their total waas greater than playerTwo's
+      alert("Player One Wins the round");
+      //incrementing playerOne wins by 1
+      playerOne.wins++;
+    } else if(playerOne.diceTotal < playerTwo.diceTotal) {
+      //alerting that playerTwo won since their total waas greater than playerOne's
+      alert("Player Two Wins the round")
+      //incrementing playerTwo wins by 1
+      playerTwo.wins++;
+    } else {
+      //alerting that there was a ties
+      alert("TIE this round");
+      //incrementing the ties variable by 1
+      game.ties++;
+    }
+
+    //alerting the current score of the game
+    alert("Score is: " + playerOne.name + " " + playerOne.wins + " - " + playerTwo.name + " " + playerTwo.wins + " , Ties: " + game.ties);
+
+    resetPlayersValues();
+
+    //incrementing round number by 1, keeping the while loop going
+    game.currentRound++;
   }
 
-  //alerting the current score of the game
-  alert("Score is: " + playerOne.name + " " + playerOne.wins + " - " + playerTwo.name + " " + playerTwo.wins + " , Ties: " + ties);
+  whoWonTheGame();
 
+}
+
+//creating a function to reset players values
+function resetPlayersValues(){
   //resetting the values of playerOne & playerTwo for the next round
   //this can be done in a function as well
   //what will happen if we don't reset the values?
@@ -94,16 +112,18 @@ while(roundNumber < 9){
   playerTwo.diceOne = Math.ceil(Math.random() * 6);
   playerTwo.diceTwo = Math.ceil(Math.random() * 6);
   playerTwo.diceThree = Math.ceil(Math.random() * 6);
-
-  //incrementing round number by 1, keeping the while loop going
-  roundNumber++;
 }
 
-//setting the logic to show who won after the while loop ended
-if(playerOne.wins > playerTwo.wins){
-  alert(playerOne.name + " Wins the game");
-} else if(playerOne.wins < playerTwo.wins) {
-  alert(playerTwo.name + " Wins the game");
-} else {
-  alert("Y'all tied. nobody wins");
+//writing a function for the end logic of the game
+function whoWonTheGame(){
+  //setting the logic to show who won after the while loop ended
+  if(playerOne.wins > playerTwo.wins){
+    alert(playerOne.name + " Wins the game");
+  } else if(playerOne.wins < playerTwo.wins) {
+    alert(playerTwo.name + " Wins the game");
+  } else {
+    alert("Y'all tied. nobody wins");
+  }
 }
+
+runDiceGame();
